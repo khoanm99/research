@@ -43,7 +43,7 @@ const HorizontalScrollWithFramer = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <div className="scroll-container w-full fixed left-0 top-0 will-change-transform bg-rose-400">
+      <div className="scroll-container w-full fixed left-0 top-0 will-change-transform bg-slate-400">
         <motion.div
           ref={scrollRef}
           style={{ x: spring }}
