@@ -6,6 +6,7 @@ import {
   useSpring,
   useIsomorphicLayoutEffect,
   useScroll,
+  useDragControls,
 } from "framer-motion";
 
 const HorizontalScrollWithFramer = ({ children }: { children: ReactNode }) => {
@@ -13,10 +14,11 @@ const HorizontalScrollWithFramer = ({ children }: { children: ReactNode }) => {
   const pageHeight = useRef<HTMLDivElement>(null);
   const [scrollRange, setScrollRange] = useState(0);
   const [viewportW, setViewportW] = useState(0);
+  const controls = useDragControls();
 
   useIsomorphicLayoutEffect(() => {
     if (!scrollRef || !scrollRef.current) return;
-    scrollRef && setScrollRange(scrollRef.current.scrollWidth ?? 0);
+    setScrollRange(scrollRef.current.scrollWidth ?? 0);
   }, [scrollRef]);
 
   const onResize = useCallback((entries: ResizeObserverEntry[]) => {
@@ -35,8 +37,8 @@ const HorizontalScrollWithFramer = ({ children }: { children: ReactNode }) => {
   const { scrollYProgress } = useScroll();
   const transform = useTransform(
     scrollYProgress,
-    [0, 1],
-    [0, -scrollRange + viewportW]
+    [0, 1], // It mean use this Effect for hold section 
+    [0, -scrollRange + viewportW] // Calc the position that need to end 
   );
   const physics = { damping: 15, mass: 0.27, stiffness: 55 }; // easing of smooth scroll
   const spring = useSpring(transform, physics); // apply easing to the negative scroll value
@@ -48,10 +50,15 @@ const HorizontalScrollWithFramer = ({ children }: { children: ReactNode }) => {
           ref={scrollRef}
           style={{ x: spring }}
           className="flex flex-nowrap h-screen items-center relative"
+          drag
+          dragControls={controls}
+          onDirectionLock={(e) => console.log("Aaaaaa", e)}
+          onDrag={(e) => console.log(e)}
         >
           {children}
         </motion.div>
       </div>
+      {/* Ghost div */}
       <div
         ref={pageHeight}
         style={{ height: scrollRange }}
