@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import SmoothScroll from "@/components/scrollSmoth";
 import Parallax from "@/components/ScrollWithParallax";
+import { DragItem } from "@/components/dragItem";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,6 @@ export default function Home() {
       </Head>
       <SmoothScroll>
         <main className={`min-h-[5000px]`}>
-          {/* <div onClick={() => {}}>Click to active redux</div> */}
           <div className={styles.description}>
             <p className="text-[30px]">Page Demo using Framer Motion</p>
             <div>
@@ -84,7 +84,7 @@ export default function Home() {
                 </p>
               </a>
             </Parallax>
-
+          <DragItem />
             <a
               href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
               className={styles.card}
