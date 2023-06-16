@@ -31,7 +31,8 @@
     "redux": "^4.2.1",
     "resize-observer-polyfill": "^1.5.1",
     "typescript": "4.9.4",
-    "use-image": "^1.1.0"
+    "use-image": "^1.1.0",
+    "usehooks-ts": "^2.9.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
