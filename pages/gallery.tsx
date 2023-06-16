@@ -1,5 +1,6 @@
 import GallerySection from "@/organisms/galleryWithScrolling";
 import sampleData from "@/data/gallery.json";
+import GalleryWithGsap from "@/organisms/galleryWithGsap";
 
 const Gallery = () => {
   return (
@@ -7,7 +8,7 @@ const Gallery = () => {
       <div className="h-[50vh] w-full flex items-end">
         <div className="w-full text-center">
           <h1 className={`text-[80px]`}>
-            <span className="block">WHAT WE </span>{" "}
+            <span className="block">WHAT WE </span>
             <span className={` block indent-8`}>ALREADY DID</span>
           </h1>
         </div>
@@ -15,23 +16,25 @@ const Gallery = () => {
       <div className="h-[50vh] w-full flex items-end">
         <div className="w-full text-center">
           <h1 className={`text-[80px]`}>
-            <span className="block">WHAT WE </span>{" "}
+            <span className="block">WHAT WE </span>
             <span className={` block indent-8`}>ALREADY DID</span>
           </h1>
         </div>
       </div>
-      <div className="h-[50vh] w-full flex items-end">
+      <div className="h-[50vh] w-ful l flex items-end">
         <div className="w-full text-center">
           <h1 className={`text-[80px]`}>
-            <span className="block">WHAT WE </span>{" "}
+            <span className="block">WHAT WE </span>
             <span className={` block indent-8`}>ALREADY DID</span>
           </h1>
         </div>
       </div>
-      <GallerySection
+      {/* <GallerySection
         listItem={sampleData.data.listItem}
         className="pt-[20px]"
-      />
+      /> */}
+
+      <GalleryWithGsap listItem={sampleData.data.listItem} className="" />
 
       <div className="h-[100vh] w-full flex items-center">
         <div className="w-full text-center">
